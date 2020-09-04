@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.dao">
+    <insert id="addAnnouncement" parameterType="Announcement">
+        insert into Announcement(ann_id, department_id, ann_type, ann_title, ann_content, ann_time)
+        value (NULL, "${department_id}", ${ann_type}, "${ann_title}", "${ann_content}", ${ann_time})
+    </insert>
+    <select id="findAnnouncementByAnnId" parameterType="Integer"
+            resultType="Announcement">
+        select * from Announcement where ann_id = ${ann_id}
+    </select>
+    <select id="findAnnouncementByDepartmentId" parameterType="Integer"
+            resultType="Announcement">
+        select * from announcement where department_id = ${department_id}
+    </select>
+    <select id="findAllAnnouncement" resultType="Announcement">
+        select * from Announcement
+    </select>
+    <delete id="deleteAnnouncement" parameterType="Announcement">
+        delete from announcement where ann_id = ${ann_id}
+    </delete>
+    <select id="searchAnnouncement" parameterType="String"
+            resultType="Announcement">
+        <bind name="pattern_username" value="'%' + _parameter + '%'"/>
+        <!-- select * from t_customer where username like '%${value}%' -->
+        select * from announcement where ann_title like '${pattern_username}' or ann_content like '${pattern_username}'
+    </select>
+</mapper>

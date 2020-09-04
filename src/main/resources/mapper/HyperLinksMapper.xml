@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.dao">
+    <insert id="insertHyperLinks" parameterType="HyperLinks">
+        insert into HyperLinks(function_id,function_name,function_link)
+        value (null,"${function_name}","${function_link}")
+    </insert>
+    <select id="findHyperLinksByFuncId" parameterType="Integer"
+            resultType="HyperLinks">
+        select * from HyperLinks where function_id = ${function_id}
+    </select>
+    <update id="updateHyperLinks" parameterType="HyperLinks">
+        update HyperLinks set function_name="${function_name}",
+        function_link="${function_link}" where function_id=${function_id}
+    </update>
+    <delete id="deleteHyperLinksByFuncId" parameterType="Integer">
+        delete from HyperLinks where function_id=${function_id}
+    </delete>
+</mapper>

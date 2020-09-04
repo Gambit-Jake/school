@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.dao">
+    <insert id="insertDepartment" parameterType="Department">
+        insert into Department(department_id,authority,template)
+        value (null,${authority},${template})
+    </insert>
+    <select id="findDepartmentByDepId" parameterType="Integer"
+            resultType="Department">
+        select * from Department where department_id = ${department_id}
+    </select>
+    <update id="updateDepartment" parameterType="Department">
+        update Department set authority=${authority},
+        template=${template} where department_id=${department_id}
+    </update>
+    <delete id="deleteDepartmentByDepId" parameterType="Integer">
+        delete from Department where department_id=#{department_id}
+    </delete>
+</mapper>

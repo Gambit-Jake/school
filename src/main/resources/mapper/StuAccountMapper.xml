@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.dao">
+    <insert id="addStuAccount" parameterType="StuAccount">
+        insert into StuAccount(stu_id, password, e_mail)
+        value (${stu_id}, "${password}", "${e_mail}")
+    </insert>
+    <select id="findStuAccountByStuId" parameterType="Integer"
+            resultType="StuAccount">
+        select * from StuAccount where stu_id = ${stu_id}
+    </select>
+    <select id="findStuAccountByEmail" parameterType="String"
+            resultType="StuAccount">
+        select * from StuAccount where e_mail = "${e_mail}"
+    </select>
+    <update id="updateStuAccountPassword" parameterType="StuAccount">
+        update StuAccount  set password = "${password}"
+        where stu_id = ${stu_id}
+    </update>
+    <delete id="deleteStuAccount" parameterType="StuAccount">
+        delete from  StuAccount
+        where stu_id = ${stu_id}
+    </delete>
+
+</mapper>
