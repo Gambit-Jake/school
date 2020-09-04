@@ -152,7 +152,9 @@ Fixed Navigation
                                     Functions
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/student/toStudentInfo">Personal Information</a>
+                                    <a class="dropdown-item"
+                                       href="${pageContext.request.contextPath}/student/toStudentInfo">Personal
+                                        Information</a>
                                     <a class="dropdown-item" href="Grade.jsp">Score Search</a>
                                     <a class="dropdown-item" href="../error/404.jsp">Class Schedule</a>
                                 </div>
@@ -278,8 +280,29 @@ Fixed Navigation
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="confirm-btn" class="btn" style="background-color: #31BB9E; color: aliceblue;">
+                <button type="button" id="confirm-btn" class="btn" style="background-color: #31BB9E; color: aliceblue;"
+                        data-dismiss="modal">
                     Save changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- SuccessModal -->
+<div class="modal fade" id="success" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Modified successfully</h4>
+            </div>
+            <div class="modal-body">
+                Your personal information has been modified successfully
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal" id="flash"
+                        style="background-color: RGB(51,186,157); color: aliceblue;">Close
                 </button>
             </div>
         </div>
@@ -307,7 +330,7 @@ Essential Scripts
 
 <script>
     $(function () {
-            function dateVal(time) {
+            function dateVal(time) {//用于将int类型的日期转化成字符串
                 var now = new Date(time);
                 //格式化日，如果小于9，前面补0
                 var day = ("0" + now.getDate()).slice(-2);
@@ -319,7 +342,7 @@ Essential Scripts
                 return today
             }
 
-
+            //获取参数
             var studentInfo = ${studentInfo};
             console.log(studentInfo);
             birthday = dateVal(studentInfo.birthday + 1598416885016)
@@ -362,8 +385,12 @@ Essential Scripts
                 });
 
             })
+            $('#flash').onclick('click', function () {//结束活动，返回初始页面
+                $(location).attr('href', './Index2.jsp');
+            })
 
-            $('#confirm-btn').on('click', function () {
+
+            $('#confirm-btn').on('click', function () {//给提交按钮赋值
                 var $contents = $('#confirm p')
                 var StudentInfo = {
                     'stu_id': null,
@@ -392,7 +419,7 @@ Essential Scripts
                     contentType: "application/json;charset=UTF-8",// 定义发送请求的数据格式为JSON字符串
                     // dataType: "json",//定义回调响应的数据格式为JSON字符串,该属性可以省略
                     success: function () {
-                        $(location).attr('href', './index2.jsp');
+                        $('#success').modal({})
                     }
                 })
 
