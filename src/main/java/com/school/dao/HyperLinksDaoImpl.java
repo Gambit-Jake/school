@@ -10,11 +10,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.io.IOException;
 import java.io.InputStream;
+
 @Repository("hyperlinksDao")
 public class HyperLinksDaoImpl implements HyperLinksDao {
     static String mybatisxmlpath;
     static InputStream inputStream;
     static SqlSessionFactory sqlSessionFactory;
+
     static {
         mybatisxmlpath = "mybatis-config.xml";
         try {
@@ -24,37 +26,41 @@ public class HyperLinksDaoImpl implements HyperLinksDao {
         }
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
-    static SqlSession getSession(){
+
+    static SqlSession getSession() {
         return sqlSessionFactory.openSession();
     }
-    public int insertHyperLinks(HyperLinks hyperLinks)
-    {
+
+    public int insertHyperLinks(HyperLinks hyperLinks) {
         SqlSession sqlSession = getSession();
-        int row = sqlSession.insert("insertHyperLinks",hyperLinks);
-        sqlSession.commit();
-        sqlSession.close();
-        return row;
-    }
-    public int updateHyperLinks(HyperLinks hyperLinks){
-        SqlSession sqlSession = getSession();
-        int row = sqlSession.update("updateHyperLinks",hyperLinks);
+        int row = sqlSession.insert("insertHyperLinks", hyperLinks);
         sqlSession.commit();
         sqlSession.close();
         return row;
     }
 
-    public int deleteHyperLinksByFuncId(Integer function_id){
+    public int updateHyperLinks(HyperLinks hyperLinks) {
         SqlSession sqlSession = getSession();
-        int row = sqlSession.delete("deleteHyperLinksByFuncId",function_id);
+        int row = sqlSession.update("updateHyperLinks", hyperLinks);
         sqlSession.commit();
         sqlSession.close();
         return row;
     }
-    public HyperLinks findHyperLinksByFuncId(Integer function_id){
+
+    public int deleteHyperLinksByFuncId(Integer function_id) {
         SqlSession sqlSession = getSession();
-        return sqlSession.selectOne("findHyperLinksByFuncId",function_id);
+        int row = sqlSession.delete("deleteHyperLinksByFuncId", function_id);
+        sqlSession.commit();
+        sqlSession.close();
+        return row;
     }
-    public List<HyperLinks> findAllHyperLinks(){
+
+    public HyperLinks findHyperLinksByFuncId(Integer function_id) {
+        SqlSession sqlSession = getSession();
+        return sqlSession.selectOne("findHyperLinksByFuncId", function_id);
+    }
+
+    public List<HyperLinks> findAllHyperLinks() {
         SqlSession sqlSession = getSession();
         return sqlSession.selectList("findAllHyperLinks");
     }

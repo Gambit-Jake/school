@@ -142,7 +142,7 @@ Fixed Navigation
                                     Functions
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/student/toStudentInfo">Personal Information</a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/student/toStudentInfo">Personal Information</a>
                                     <a class="dropdown-item" href="Grade.jsp">Score Search</a>
                                     <a class="dropdown-item" href="../error/404.jsp">Class Schedule</a>
                                 </div>
@@ -234,8 +234,7 @@ Fixed Navigation
                 '                                              d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>\n' +
                 '                                        <path d="M8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"/>\n' +
                 '                                    </svg>'
-        }
-        else{
+        } else {
             icon = '<svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-book"\n' +
                 '                                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">\n' +
                 '                                        <path fill-rule="evenodd"\n' +
@@ -270,10 +269,11 @@ Fixed Navigation
 
         return htmlcontent;
     }
+
     $(function () {
         $.each(announcements, function (index, announcement) {
 
-            announcementContent = add(announcement.ann_title, announcement.ann_content,announcement.ann_type,announcement.department_id)
+            announcementContent = add(announcement.ann_title, announcement.ann_content, announcement.ann_type, announcement.department_id)
             console.log(announcementContent)
             $('#AnnouncementList').append(announcementContent);
         })

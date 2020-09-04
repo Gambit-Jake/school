@@ -2,19 +2,20 @@ package com.school.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.school.entity.Announcement;
 import com.school.entity.Department;
 import com.school.service.AnnouncementService;
 import com.school.service.DepartmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * @Author: ZWP
@@ -33,21 +34,23 @@ public class AnnouncementControllerImpl implements AnnouncementController {
     DepartmentService departmentService;
 
     static Comparator<Announcement> netTypeComparator;
-    static{
+
+    static {
         netTypeComparator = Comparator.comparingInt(Announcement::getAnn_time);
     }
+
     @ResponseBody
     @RequestMapping("/student/toAnnouncement")
     public List<Announcement> toAnnouncement() {
-        List<Announcement> announcements =  announcementService.findAllAnnouncement();
-        for (Announcement announcement:
+        List<Announcement> announcements = announcementService.findAllAnnouncement();
+        for (Announcement announcement :
                 announcements) {
             announcement.toString();
         }
 
         Collections.sort(announcements, netTypeComparator);
-        for (Announcement announcement:
-             announcements) {
+        for (Announcement announcement :
+                announcements) {
             announcement.toString();
         }
         return announcements;
@@ -56,12 +59,12 @@ public class AnnouncementControllerImpl implements AnnouncementController {
     @RequestMapping("/student/toAnnouncementList")
     @Override
     public String toAnnouncementList(String search, Model model) throws JsonProcessingException {
-        List<Announcement> announcements =  announcementService.searchAnnouncement(search);
+        List<Announcement> announcements = announcementService.searchAnnouncement(search);
 
         Collections.sort(announcements, netTypeComparator);
         ObjectMapper objectMapper = new ObjectMapper();
         List<String> announcementsMapper = new ArrayList<String>();
-        for (Announcement announcement:
+        for (Announcement announcement :
                 announcements) {
             announcementsMapper.add(objectMapper.writeValueAsString(announcement));
         }

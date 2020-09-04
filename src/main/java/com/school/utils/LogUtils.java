@@ -1,11 +1,8 @@
 package com.school.utils;
 
 import com.school.dao.LogDao;
-import com.school.dao.LogDaoImpl;
 import com.school.entity.Log;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 

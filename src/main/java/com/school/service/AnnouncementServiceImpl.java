@@ -16,7 +16,7 @@ import java.util.List;
  * @version: 1.0
  */
 @Service("announcementService")
-public class AnnouncementServiceImpl implements AnnouncementService{
+public class AnnouncementServiceImpl implements AnnouncementService {
     @Resource(name = "announcementDao")
     AnnouncementDao announcementDao;
     @Resource(name = "logUtils")

@@ -18,8 +18,11 @@ public class SchoolServiceImp implements SchoolService {
     @Override
     public int LoginSchool(int account, String pwd) {
         SchoolAccount schoolAccount = this.schoolAccountDao.findSchoolAccountByAccountId(account);
-        if(schoolAccount == null) return -1;
-        else if(schoolAccount.getPassword().equals(pwd)) return 1;
-        else return 0;
+        if (schoolAccount == null)
+            return -1;
+        else if (schoolAccount.getPassword().equals(pwd))
+            return 1;
+        else
+            return 0;
     }
 }

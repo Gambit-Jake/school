@@ -16,5 +16,6 @@ import javax.servlet.http.HttpSession;
  */
 public interface StudentInfoController {
     String toStudentInfo(HttpSession httpSession, Model model) throws JsonProcessingException;
+
     StudentInfo changeStudentInfo(@RequestBody StudentInfo studentInfo, HttpSession httpSession);
 }

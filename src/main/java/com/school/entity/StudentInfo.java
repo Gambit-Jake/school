@@ -1,6 +1,5 @@
 package com.school.entity;
 
-import java.math.BigInteger;
 
 public class StudentInfo {
     Integer stu_id;
@@ -11,7 +10,8 @@ public class StudentInfo {
     String id_card_number;
     String native_place;
     String department;
-    public  StudentInfo(){
+
+    public StudentInfo() {
 
 
     }

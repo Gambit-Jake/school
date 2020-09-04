@@ -23,7 +23,6 @@ import java.util.List;
 public class AnnouncementDaoImpl implements AnnouncementDao {
 
 
-
     static String mybatisxmlpath;//batis配置文件路径
     static InputStream inputStream;
     static SqlSessionFactory sqlSessionFactory;
@@ -62,12 +61,14 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
         SqlSession sqlSession = getSession();
         return sqlSession.selectList("findAnnouncementByDepartmentId", department_id);
     }
+
     @Override
     public List<Announcement> findAnnouncementByType(Integer type) {
         SqlSession sqlSession = getSession();
         return sqlSession.selectList("findAnnouncementByType", type);
 
     }
+
     @Override
     public List<Announcement> findAllAnnouncement() {
         SqlSession sqlSession = getSession();
@@ -92,6 +93,7 @@ public class AnnouncementDaoImpl implements AnnouncementDao {
 
 
     }
+
     @Override
     public List<Announcement> searchAnnouncement(String str) {
         SqlSession sqlSession = getSession();

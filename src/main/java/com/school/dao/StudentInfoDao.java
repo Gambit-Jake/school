@@ -2,7 +2,6 @@ package com.school.dao;
 
 import com.school.entity.StudentInfo;
 
-import java.util.Date;
 import java.util.List;
 
 public interface StudentInfoDao {

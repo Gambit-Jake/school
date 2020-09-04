@@ -13,8 +13,10 @@ import java.util.List;
  */
 public interface StudentService {
     List<StudentInfo> findAllStudent();
+
     //使用StudentDao中的函数
     StudentInfo updateStudent(StudentInfo studentInfo);
+
     //需要Dao层的update函数，需要允许为空
     int deleteStudent(Integer student_id);
     //需要使用id删除学生的函数

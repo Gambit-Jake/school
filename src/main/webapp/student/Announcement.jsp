@@ -30,8 +30,8 @@
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="../static/template/css/style.css">
     <style>
-        .btn{
-            cursor:pointer
+        .btn {
+            cursor: pointer
         }
     </style>
 
@@ -153,7 +153,9 @@ Fixed Navigation
                                     Functions
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/student/toStudentInfo">Personal Information</a>
+                                    <a class="dropdown-item"
+                                       href="${pageContext.request.contextPath}/student/toStudentInfo">Personal
+                                        Information</a>
                                     <a class="dropdown-item" href="Grade.jsp">Score Search</a>
                                     <a class="dropdown-item" href="../error/404.jsp">Class Schedule</a>
                                 </div>
@@ -213,7 +215,7 @@ Fixed Navigation
                                     <div class="pricing-body">
                                         <div class="price">
                                             <span class="ann_title">ann_title</span>
-<%--                                            <span class="sup">life</span>--%>
+                                            <%--                                            <span class="sup">life</span>--%>
                                         </div>
                                         <div class="progress" data-percent="45%">
                                             <div class="progress-bar"></div>
@@ -229,7 +231,7 @@ Fixed Navigation
                                     <div class="pricing-body">
                                         <div class="price">
                                             <span class="ann_title">ann_title</span>
-<%--                                            <span class="sup">life</span>--%>
+                                            <%--                                            <span class="sup">life</span>--%>
                                         </div>
                                         <div class="progress" data-percent="45%">
                                             <div class="progress-bar"></div>
@@ -245,7 +247,7 @@ Fixed Navigation
                                     <div class="pricing-body">
                                         <div class="price">
                                             <span class="ann_title">ann_title</span>
-<%--                                            <span class="sup">life</span>--%>
+                                            <%--                                            <span class="sup">life</span>--%>
                                         </div>
                                         <div class="progress" data-percent="45%">
                                             <div class="progress-bar"></div>
@@ -266,7 +268,7 @@ Fixed Navigation
                                     <div class="pricing-body">
                                         <div class="price">
                                             <span class="ann_title">ann_title</span>
-<%--                                            <span class="sup">study</span>--%>
+                                            <%--                                            <span class="sup">study</span>--%>
                                         </div>
                                         <div class="progress" data-percent="45%">
                                             <div class="progress-bar"></div>
@@ -376,13 +378,13 @@ Essential Scripts
             var title;
             $('#' + Id + ' h3').html("Department " + announcement.department_id)
             title = announcement.ann_title
-            if(title.length > 25)
-                title = title.substring(0,25) + "...."
-            if(title.length < 10)
+            if (title.length > 25)
+                title = title.substring(0, 25) + "...."
+            if (title.length < 10)
                 title = title + "<br><br>"
             $('#' + Id + ' .ann_title').html('<h1>' + title + '</h1>')
             $('#' + Id + ' p').html(announcement.ann_content.substring(0, 50) + ".....")
-            $('#' + Id + ' .btn').attr("href", "${pageContext.request.contextPath}/student/toOneAnnouncement?ann_id="+announcement.ann_id);
+            $('#' + Id + ' .btn').attr("href", "${pageContext.request.contextPath}/student/toOneAnnouncement?ann_id=" + announcement.ann_id);
         }
 
         function addAnnouncements(data) {//添加数据到六个div中

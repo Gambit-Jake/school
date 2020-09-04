@@ -33,7 +33,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return row;
     }
 
-    public Department findDepartmentById(Integer id){
+    public Department findDepartmentById(Integer id) {
         logUtils.logPrint("service", "找学院啊", "成功");
         return departmentDao.findDepartmentByDepId(id);
     }
