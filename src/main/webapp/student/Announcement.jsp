@@ -153,7 +153,7 @@ Fixed Navigation
                                     Functions
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="StudentInfo.jsp">Personal Information</a>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/student/toStudentInfo">Personal Information</a>
                                     <a class="dropdown-item" href="Grade.jsp">Score Search</a>
                                     <a class="dropdown-item" href="../error/404.jsp">Class Schedule</a>
                                 </div>

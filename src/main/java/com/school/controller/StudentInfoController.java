@@ -1,7 +1,9 @@
 package com.school.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.school.entity.StudentInfo;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,4 +16,5 @@ import javax.servlet.http.HttpSession;
  */
 public interface StudentInfoController {
     String toStudentInfo(HttpSession httpSession, Model model) throws JsonProcessingException;
+    StudentInfo changeStudentInfo(@RequestBody StudentInfo studentInfo, HttpSession httpSession);
 }
