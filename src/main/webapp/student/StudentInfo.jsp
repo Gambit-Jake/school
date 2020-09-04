@@ -385,7 +385,7 @@ Essential Scripts
                 });
 
             })
-            $('#flash').onclick('click', function () {//结束活动，返回初始页面
+            $('#flash').on('click', function () {//结束活动，返回初始页面
                 $(location).attr('href', './Index2.jsp');
             })
 
