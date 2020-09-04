@@ -190,8 +190,9 @@ Fixed Navigation
                             <p class="col-sm-3" style="color:RGB(51,186,157);">Birthday:</p>
                         </div>
                         <div class="form-group">
-                            <input type="text" id="Birthday" disabled="disabled" class="form-control"
-                                   placeholder="Birthday">
+                            <input type="date" required="required" id="Birthday" disabled="disabled"
+                                   class="form-control"
+                                   placeholder="" value="">
                         </div>
                         <div class="row">
                             <p class="col-sm-3" style="color:RGB(51,186,157);">Ethic:</p>
@@ -306,79 +307,101 @@ Essential Scripts
 
 <script>
     $(function () {
-        var studentInfo = ${studentInfo};
-        console.log(studentInfo);
-        date = new Date(studentInfo.birthday + 1598416885016);
-        // 格式化日期
-        dateTime = date.toLocaleString();
-        $('#Name').attr('placeholder', studentInfo.name);
-        $('#Gander').attr('placeholder', studentInfo.gender);
-        $('#Birthday').attr('placeholder', dateTime);
-        $('#Ethic').attr('placeholder', studentInfo.ethic);
-        $('#Native_place').attr('placeholder', studentInfo.native_place);
-        $('#Id_card_number').attr('placeholder', studentInfo.id_card_number);
-        $('#Department').attr('placeholder', studentInfo.department);
-
-
-        $('#change').on('click', function () {
-            var $input = $('input')
-            $.each($input, function (indexInArray, valueOfElement) {
-                valueOfElement.value = valueOfElement.placeholder
-            });
-            $('input').attr("disabled", false)
-            $('#change').toggle(500);
-            $('#submit-button').css({
-                'visibility': 'visible'
-            })
-        })
-
-
-        $('#submit-button').on('click', function () {
-            var $contents = $('#confirm p')
-            var $vals = $('.form-group input')
-            $.each($vals, function (indexInArray, valueOfElement) {
-                $contents[indexInArray].innerHTML = valueOfElement.value;
-            });
-
-        })
-
-        $('#confirm-btn').on('click', function () {
-            var $contents = $('#confirm p')
-            var StudentInfo = {
-                'stu_id': null,
-                'name': null,
-                'gender': null,
-                'birthday': null,
-                'ethic': null,
-                'native_place' :null,
-                'id_card_number': null,
-                'department':null
+            function dateVal(time) {
+                var now = new Date(time);
+                //格式化日，如果小于9，前面补0
+                var day = ("0" + now.getDate()).slice(-2);
+                //格式化月，如果小于9，前面补0
+                var month = ("0" + (now.getMonth() + 1)).slice(-2);
+                //拼装完整日期格式
+                var today = now.getFullYear() + "-" + (month) + "-" + (day);
+                //完成赋值
+                return today
             }
-            StudentInfo.name = $contents[0].html();
-            StudentInfo.gender = $contents[1].html();
-            StudentInfo.birthday = $contents[2].html();
-            StudentInfo.ethic = $contents[3].html();
-            StudentInfo.native_place = $contents[4].html();
-            StudentInfo.id_card_number = $contents[5].html();
-            StudentInfo.native_place = $contents[6].html();
-            StudentInfo.department = $contents[7].html();
-            $.ajax({
-                type: 'POST',
-                Content: 'application/json',
-                url: '${pageContext.request.contextPath}/changeStudentInfo',
-                data: JSON.stringify(StudentInfo),
-                contentType: "application/json;charset=UTF-8",// 定义发送请求的数据格式为JSON字符串
-                // dataType: "json",//定义回调响应的数据格式为JSON字符串,该属性可以省略
-                success: function () {
-                    $(location).attr('href', './index2.jsp');
-                }
+
+
+            var studentInfo = ${studentInfo};
+            console.log(studentInfo);
+            birthday = dateVal(studentInfo.birthday + 1598416885016)
+            // 格式化日期
+            $('#Name').attr('placeholder', studentInfo.name);
+            $('#Gander').attr('placeholder', studentInfo.gender);
+            var $Birthday = $('#Birthday');
+            $Birthday.attr('value', birthday);
+            $Birthday.attr('placeholder', birthday);
+            $Birthday.css({
+                "color": 'RGB(134,142,150)'
+            })
+            $('#Ethic').attr('placeholder', studentInfo.ethic);
+            $('#Native_place').attr('placeholder', studentInfo.native_place);
+            $('#Id_card_number').attr('placeholder', studentInfo.id_card_number);
+            $('#Department').attr('placeholder', studentInfo.department);
+
+
+            $('#change').on('click', function () {
+                var $input = $('input')
+                $.each($input, function (indexInArray, valueOfElement) {
+                    valueOfElement.value = valueOfElement.placeholder
+                });
+                $('input').attr("disabled", false)
+                $('#change').toggle(500);
+                $('#submit-button').css({
+                    'visibility': 'visible'
+                })
+                $('#Birthday').css({
+                    "color": 'RGB(0,0,0)'
+                })
             })
 
-            // 此处建议使用ajax异步传输数据,数据传输成功后跳转到初始页面
-        })
+
+            $('#submit-button').on('click', function () {
+                var $contents = $('#confirm p')
+                var $vals = $('.form-group input')
+                $.each($vals, function (indexInArray, valueOfElement) {
+                    $contents[indexInArray].innerHTML = valueOfElement.value;
+                });
+
+            })
+
+            $('#confirm-btn').on('click', function () {
+                var $contents = $('#confirm p')
+                var StudentInfo = {
+                    'stu_id': null,
+                    'name': null,
+                    'gender': null,
+                    'birthday': null,
+                    'ethnic': null,
+                    'native_place': null,
+                    'id_card_number': null,
+                    'department': null
+                }
+                var Time = new Date($contents[2].innerHTML).getTime() - 1598416885016;
+                StudentInfo.name = $contents[0].innerHTML;
+                StudentInfo.gender = $contents[1].innerHTML;
+                StudentInfo.birthday = Time;
+                StudentInfo.ethnic = $contents[3].innerHTML;
+                StudentInfo.native_place = $contents[4].innerHTML;
+                StudentInfo.id_card_number = $contents[5].innerHTML;
+                StudentInfo.department = $contents[6].innerHTML;
+                console.log(JSON.stringify(StudentInfo));
+                $.ajax({
+                    type: 'POST',
+                    Content: 'application/json',
+                    url: '${pageContext.request.contextPath}/student/changeStudentInfo',
+                    data: JSON.stringify(StudentInfo),
+                    contentType: "application/json;charset=UTF-8",// 定义发送请求的数据格式为JSON字符串
+                    // dataType: "json",//定义回调响应的数据格式为JSON字符串,该属性可以省略
+                    success: function () {
+                        $(location).attr('href', './index2.jsp');
+                    }
+                })
+
+                // 此处建议使用ajax异步传输数据,数据传输成功后跳转到初始页面
+            })
 
 
-    })
+        }
+    )
 </script>
 
 </body>
