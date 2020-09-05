@@ -12,6 +12,4 @@ import com.school.entity.Department;
 public interface DepartmentService {
     int updateDepartment(Department department);
     //Department的update函数
-
-    Department findDepartmentById(Integer id);
 }

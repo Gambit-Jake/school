@@ -1,5 +1,6 @@
 package com.school.dao;
 
+import com.school.entity.Announcement;
 import com.school.entity.Log;
 
 import java.util.List;

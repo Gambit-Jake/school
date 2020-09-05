@@ -17,4 +17,7 @@
     <delete id="deleteHyperLinksByFuncId" parameterType="Integer">
         delete from HyperLinks where function_id=${function_id}
     </delete>
+    <select id="findAllHyperLinks" resultType="HyperLinks">
+        select * from HyperLinks
+    </select>
 </mapper>

@@ -18,7 +18,8 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public Course findCourseById(int course_id) {
-        return this.courseDao.findCourseById(course_id);
+        Course course = this.courseDao.findCourseById(course_id);
+        return course;
     }
 
     /*
@@ -26,7 +27,8 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public List<Course> findCourseByName(String course_name) {
-        return this.courseDao.findCourseByName(course_name);
+        List<Course> courses = this.courseDao.findCourseByName(course_name);
+        return courses;
     }
 
     /*
@@ -34,7 +36,8 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public List<Course> findCourseByTerm(String term) {
-        return this.courseDao.findCourseByTerm(term);
+        List<Course> courses = this.courseDao.findCourseByTerm(term);
+        return courses;
     }
 
     /*
@@ -42,7 +45,8 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public List<Course> findAllCourse() {
-        return this.courseDao.findAllCourse();
+        List<Course> courses = this.courseDao.findAllCourse();
+        return courses;
     }
 
     /*
@@ -52,10 +56,9 @@ public class CourseServiceImpl implements CourseService {
     public int addCourseRecord(Course course) {
         int newid = course.getCourse_id();
         Course course1 = this.courseDao.findCourseById(newid);
-        if (course1 == null) {
+        if(course1 == null){
             this.courseDao.addCourse(course);
             return 1;
-        } else
-            return 0;
+        }else return 0;
     }
 }

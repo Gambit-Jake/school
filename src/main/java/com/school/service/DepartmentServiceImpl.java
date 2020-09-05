@@ -22,19 +22,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Resource(name = "logUtils")
     LogUtils logUtils;
-
     @Override
     public int updateDepartment(Department department) {//用于修改权限的函数
         int row = departmentDao.updateDepartment(department);
-        if (row == 1)
-            logUtils.logPrint("service", "修改权限", "成功");
+        if(row == 1)
+            logUtils.logPrint("service", "修改权限","成功");
         else
-            logUtils.logPrint("service", "修改权限", "失败");
+            logUtils.logPrint("service", "修改权限","失败");
         return row;
-    }
-
-    public Department findDepartmentById(Integer id) {
-        logUtils.logPrint("service", "找学院啊", "成功");
-        return departmentDao.findDepartmentByDepId(id);
     }
 }

@@ -11,13 +11,17 @@
         select * from Announcement where ann_id = ${ann_id}
     </select>
     <select id="findAnnouncementByDepartmentId" parameterType="Integer"
-            resultType="Announcement">
+                     resultType="Announcement">
         select * from announcement where department_id = ${department_id}
+    </select>
+    <select id="findAnnouncementByType" parameterType="Integer"
+            resultType="Announcement">
+        select * from announcement where ann_type = ${ann_type}
     </select>
     <select id="findAllAnnouncement" resultType="Announcement">
         select * from Announcement
     </select>
-    <delete id="deleteAnnouncement" parameterType="Announcement">
+    <delete id="deleteAnnouncementByAnnId" parameterType="Announcement">
         delete from announcement where ann_id = ${ann_id}
     </delete>
     <select id="searchAnnouncement" parameterType="String"

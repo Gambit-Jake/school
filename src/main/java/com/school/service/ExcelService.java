@@ -13,14 +13,11 @@ public interface ExcelService {
     Workbook getExcel(String filename) throws FileNotFoundException, Exception;
 
     String cleanStuInfoExcel(Workbook hssfWorkbook);
-
     String cleanStuGradeExcel(Workbook hssfWorkbook);
 
     void readStuInfoExcel(Workbook hssfWorkbook) throws ParseException;
-
     void readStuGradeExcel(Workbook hssfWorkbook);
 
     void writeStuInfoExcel(List<StudentInfo> list) throws FileNotFoundException, Exception;
-
     void writeStuGradeExcel(List<Stugrade> list) throws IOException;
 }

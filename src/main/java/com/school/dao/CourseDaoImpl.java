@@ -12,11 +12,10 @@ import java.io.InputStream;
 import java.util.List;
 
 @Repository("courseDao")
-public class CourseDaoImpl implements CourseDao {
+public class CourseDaoImpl implements CourseDao{
     static String mybatisxmlpath;
     static InputStream inputStream;
     static SqlSessionFactory sqlSessionFactory;
-
     static {
         mybatisxmlpath = "mybatis-config.xml";
         try {
@@ -26,8 +25,7 @@ public class CourseDaoImpl implements CourseDao {
         }
         sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
     }
-
-    static SqlSession getSession() {
+    static SqlSession getSession(){
         return sqlSessionFactory.openSession();
     }
 

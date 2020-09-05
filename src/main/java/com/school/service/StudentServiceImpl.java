@@ -56,12 +56,4 @@ public class StudentServiceImpl implements StudentService {
             logUtils.logPrint("service", "删除学生信息学生", "删除失败");
         return row;
     }
-
-    @Override
-    public StudentInfo findStudentInfoById(Integer id) {
-        logUtils.logPrint("service", "查找学生", "查找成功");
-        return studentInfoDao.findStudentInfoById(id);
-    }
-
-
 }

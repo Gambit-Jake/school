@@ -1,6 +1,8 @@
 package com.school.service;
 
+import com.school.dao.LogDao;
 import com.school.utils.LogUtils;
+import org.aspectj.bridge.Message;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -13,7 +15,7 @@ import java.io.*;
  * @modifiedBy:
  * @version: 1.0
  */
-@Service("massageService")
+@Service("messageService")
 public class MessageServiceImpl implements MessageService {
 
     @Resource(name = "logUtils")

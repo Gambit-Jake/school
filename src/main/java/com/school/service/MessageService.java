@@ -1,5 +1,6 @@
 package com.school.service;
 
+import java.io.IOException;
 
 /**
  * @Author: ZWP
@@ -9,7 +10,6 @@ package com.school.service;
  * @version: 1.0
  */
 public interface MessageService {
-    String getMassage();
-
+    String getMassage() ;
     boolean setMassage(String message);
 }

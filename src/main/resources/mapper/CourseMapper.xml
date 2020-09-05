@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.entity.Course">
+    <insert id="addCourse" parameterType="com.school.entity.Course">
+        insert into course(course_id, course_name, credit, term, course_type)
+        value (${course_id}, "${course_name}", ${credit}, "${term}", "${course_type}")
+    </insert>
+    <select id="findCourseById" parameterType="Integer" resultType="com.school.entity.Course">
+        select * from course where course_id = ${course_id}
+    </select>
+    <select id="findCourseByName" parameterType="String" resultType="com.school.entity.Course">
+        select * from course where course_name = "${course_name}"
+    </select>
+    <select id="findCourseByTerm" parameterType="String" resultType="com.school.entity.Course">
+        select * from course where term = "${term}"
+    </select>
+    <select id="findAllCourse" resultType="com.school.entity.Course">
+        select * from course
+    </select>
+    <update id="updateCourse" parameterType="com.school.entity.Course">
+        update course set course_name = "${course_name}", credit = ${credit}, term = "${term}", course_type = "${course_type}" where course_id = #{course_id}
+    </update>
+    <delete id="deleteCourse" parameterType="Integer">
+        delete from course where course_id = ${course_id}
+    </delete>
+</mapper>

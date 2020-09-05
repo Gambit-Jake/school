@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.school.dao">
+    <insert id="addStudentInfo" >
+        insert into student(stu_id,`name`,gender,birthday,ethnic,id_card_number,native_place,department)
+        values (${stu_id}, "${name}", "${gender}", ${birthday}, "${ethnic}","${id_card_number}","${native_place}","${department}")
+    </insert>
+    <select id="findStudentInfoById" parameterType="Integer"
+            resultType="com.school.entity.StudentInfo">
+        select * from student where stu_id = ${stu_id}
+    </select>
+    <select id="findAll" resultType="com.school.entity.StudentInfo">
+        select * from student
+    </select>
+    <update id="updateStudentInfo" parameterType="com.school.entity.StudentInfo">
+        update student set `name`="${name}",gender="${gender}",birthday=${birthday},ethnic="${ethnic}",id_card_number="${id_card_number}",native_place="${native_place}",department="${department}"
+        where stu_id=${stu_id}
+    </update>
+    <delete id="deleteStudentInfo" parameterType="com.school.entity.StudentInfo">
+delete from student where stu_id = ${stu_id}
+
+    </delete>
+
+</mapper>

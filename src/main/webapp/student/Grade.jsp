@@ -1,3 +1,5 @@
+<%@ page import="com.school.entity.StugradeDTO" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!--[if gt IE 8]><!-->
 <html lang="zxx">
@@ -173,9 +175,7 @@ Fixed Navigation
                                     Functions
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item"
-                                       href="${pageContext.request.contextPath}/student/toStudentInfo">Personal
-                                        Information</a>
+                                    <a class="dropdown-item" href="StudentInfo.jsp">Personal Information</a>
                                     <a class="dropdown-item" href="Grade.jsp">Score Search</a>
                                     <a class="dropdown-item" href="../error/404.jsp">Class Schedule</a>
                                 </div>
@@ -231,60 +231,21 @@ Fixed Navigation
                             <th>Score</th>
                         </tr>
                         </tfoot>
-                        <tr>
-                            <td>17069130060</td>
-                            <td>Lael Greer</td>
-                            <td>Systems Administrator</td>
-                            <td>London</td>
-                            <td>21</td>
-                            <td>2009/02/27</td>
-                            <td>$103,500</td>
-                        </tr>
-                        <tr>
-                            <td>17069130060</td>
-                            <td>Lael Greer</td>
-                            <td>Systems Administrator</td>
-                            <td>London</td>
-                            <td>21</td>
-                            <td>2009/02/27</td>
-                            <td>$103,500</td>
-                        </tr>
-                        <tr>
-                            <td>17069130060</td>
-                            <td>Jonas Alexander</td>
-                            <td>Developer</td>
-                            <td>San Francisco</td>
-                            <td>30</td>
-                            <td>2010/07/14</td>
-                            <td>$86,500</td>
-                        </tr>
-                        <tr>
-                            <td>17069130060</td>
-                            <td>Shad Decker</td>
-                            <td>Regional Director</td>
-                            <td>Edinburgh</td>
-                            <td>51</td>
-                            <td>2008/11/13</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>17069130060</td>
-                            <td>Michael Bruce</td>
-                            <td>Javascript Developer</td>
-                            <td>Singapore</td>
-                            <td>29</td>
-                            <td>2011/06/27</td>
-                            <td>$183,000</td>
-                        </tr>
-                        <tr>
-                            <td>17069130060</td>
-                            <td>Donna Snider</td>
-                            <td>Customer Support</td>
-                            <td>New York</td>
-                            <td>27</td>
-                            <td>2011/01/25</td>
-                            <td>$112,000</td>
-                        </tr>
+
+                        <c:forEach items="${list}" var="list"  varStatus="status">
+                                <tr>
+                                <td>${list.stu_id}</td>
+                                <td>${list.course_id}</td>
+                                <td>${list.course_name}</td>
+                                <td>${list.credit}</td>
+                                <td>${list.term}</td>
+                                <td>${list.course_type}</td>
+                                <td>${list.score}</td>
+
+                            </tr>
+                        </c:forEach>
+
+
                     </table>
                 </div>
             </div>

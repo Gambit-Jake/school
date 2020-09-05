@@ -19,12 +19,9 @@ public class StuServiceImp implements StuService {
     @Override
     public int LoginStu(int account, String pwd) {
         StuAccount stuAccount = this.stuAccountDao.findStuAccountByStuId(account);
-        if (stuAccount == null)
-            return -1;
-        else if (stuAccount.getPassword().equals(pwd))
-            return 1;
-        else
-            return 0;
+        if(stuAccount == null) return -1;
+        else if(stuAccount.getPassword().equals(pwd)) return 1;
+        else return 0;
     }
 
     /*
@@ -41,15 +38,14 @@ public class StuServiceImp implements StuService {
     @Override
     public int RegisterStu(int account, String pwd, String email) {
         StuAccount stuAccount = this.stuAccountDao.findStuAccountByStuId(account);
-        if (stuAccount == null) {
+        if(stuAccount == null){
             StuAccount stuAccount1 = new StuAccount();
             stuAccount1.setStu_id(account);
             stuAccount1.setPassword(pwd);
             stuAccount1.setE_mail(email);
             this.stuAccountDao.addStuAccount(stuAccount1);
             return 1;
-        } else
-            return 0;
+        }else return 0;
     }
 
     /*
@@ -58,11 +54,10 @@ public class StuServiceImp implements StuService {
     @Override
     public int ChangePwdStu(int account, String oldPwd, String newPwd) {
         StuAccount stuAccount = this.stuAccountDao.findStuAccountByStuId(account);
-        if (stuAccount.getPassword().equals(oldPwd)) {
+        if(stuAccount.getPassword().equals(oldPwd)){
             stuAccount.setPassword(newPwd);
             this.stuAccountDao.updateStuAccountPassowrd(stuAccount);
             return 1;
-        } else
-            return 0;
+        }else return 0;
     }
 }

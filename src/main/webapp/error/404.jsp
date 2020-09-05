@@ -7,7 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html lang="zxx"> <!--<![endif]-->
 <head>
@@ -16,24 +18,28 @@
 
     <meta name="author" content="Themefisher.com">
     <%@ page isELIgnored="false" %>
-    <title>OneSchool</title>
+    <title>Bit-Bank</title>
 
     <!-- Mobile Specific Meta
       ================================================== -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/static/template/images/logo.png"/>
+    <%--    <link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath}/static/template/img/favicon.png"/>--%>
 
     <!-- CSS
     ================================================== -->
     <!-- Themefisher Icon font -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/template/plugins/themefisher-font.v-2/style.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/template/plugins/themefisher-font.v-2/style.css">
     <!-- bootstrap.min css -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/template/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/template/plugins/bootstrap/dist/css/bootstrap.min.css">
     <!-- Slick Carousel -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/template/plugins/slick-carousel/slick/slick.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/template/plugins/slick-carousel/slick/slick-theme.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/template/plugins/slick-carousel/slick/slick.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/static/template/plugins/slick-carousel/slick/slick-theme.css">
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/static/template/css/style.css">
 
@@ -73,7 +79,7 @@ End Preloader
                 <h1>404</h1>
                 <h2>Page Not Found</h2>
                 <p>Sorry, but the page you were trying to view does not exist.</p>
-                <a href="${pageContext.request.contextPath}/student/Index.jsp" class="btn btn-main mt-20">Go Home</a>
+                <a href="../index.html" class="btn btn-main mt-20">Go Home</a>
             </div>
         </div>
     </div>
