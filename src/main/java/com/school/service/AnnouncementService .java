@@ -13,7 +13,11 @@ import java.util.List;
  */
 public interface AnnouncementService {
     List<Announcement> findAllAnnouncement();
+
     Announcement addAnnouncement(Announcement announcement);
+
     List<Announcement> searchAnnouncement(String str);
+
+    Announcement findAnnouncementByAnnId(Integer ann_id);
 
 }
